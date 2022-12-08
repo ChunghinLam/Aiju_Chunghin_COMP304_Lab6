@@ -12,4 +12,7 @@
         <item>Anders Hejlsberg </item>
         <item>Bjarne Stroustrup</item>
     </string-array>
+
+    <string name="music_start_btn">Start Service</string>
+    <string name="music_stop_btn">Stop Service</string>
 </resources>
