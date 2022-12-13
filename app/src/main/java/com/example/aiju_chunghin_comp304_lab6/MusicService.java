@@ -4,14 +4,17 @@ import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
-import android.widget.Toast;
+import android.provider.MediaStore;
+import android.provider.Settings;
+import android.widget.RadioButton;
 
 import androidx.annotation.Nullable;
 
 public class MusicService extends Service {
-    MediaPlayer mediaPlayer;
-
+    private MediaPlayer player;
+    private RadioButton radMusic1, radMusic2;
     public MusicService() {
+
     }
 
     @Nullable
@@ -31,20 +34,32 @@ public class MusicService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
-        //TODO: write code to play a music/sound
-        mediaPlayer.start();
-        Toast.makeText(getApplicationContext(), "Playing in the Background", Toast.LENGTH_SHORT).show();
-        return startId; // scratch return
+        // Initialize player
+        player = new MediaPlayer();
+
+        // set music
+        int musicId = intent.getIntExtra("musicId", 0);
+        if (musicId == 1)
+            player = MediaPlayer.create(this, R.raw.aoharu);
+        else if (musicId == 2)
+            player = MediaPlayer.create(this, Settings.System.DEFAULT_RINGTONE_URI);
+
+        //play a music/sound if it's set
+        try {
+            player.setLooping(true);
+            player.start();
+//        Toast.makeText(this, "Service Started", Toast.LENGTH_LONG).show(); // DEBUG USE
+        } catch (Exception e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+        // Keep running until stop
+        return START_STICKY;
     }
 
     @Override
     public void onDestroy(){
         super.onDestroy();
-        mediaPlayer.stop();
-        mediaPlayer.release();
-    }
-
-    @Override
-    public void onLowMemory() {
+        player.stop();
+//        Toast.makeText(this, "Service Destroyed", Toast.LENGTH_LONG).show(); // DEBUG USE
     }
 }
