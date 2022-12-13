@@ -6,6 +6,9 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -71,5 +74,31 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MusicActivity.class);
 
         startActivity(intent);
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+
+        MenuItem mnuMusic = menu.findItem(R.id.mnuMusic);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.mnuMusic:
+                doMusic();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void doMusic() {
+        Intent music = new Intent(MainActivity.this, MusicActivity.class);
+        startActivity(music);
     }
 }

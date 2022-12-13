@@ -7,7 +7,6 @@ import android.os.IBinder;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -18,9 +17,19 @@ public class MusicService extends Service {
 
     }
 
+    @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mediaPlayer = MediaPlayer.create(this, R.raw.sound1);
+        mediaPlayer = MediaPlayer.create(this, R.raw.sound2);
+        mediaPlayer.setLooping(true); // Set looping
+        mediaPlayer.setVolume(100, 100);
     }
 
     @Override
