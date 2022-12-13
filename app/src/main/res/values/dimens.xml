@@ -2,4 +2,8 @@
 <resources>
     <dimen name="activity_horizontal_margin">1dp</dimen>
     <dimen name="activity_vertical_margin">1dp</dimen>
+
+    <dimen name="activity_header">10pt</dimen>
+    <dimen name="contents">8pt</dimen>
+    <dimen name="copyright">5pt</dimen>
 </resources>

@@ -66,4 +66,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void toMusicAct(View view){
+        Intent intent = new Intent(this, MusicActivity.class);
+
+        startActivity(intent);
+    }
 }

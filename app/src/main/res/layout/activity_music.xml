@@ -5,6 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MusicActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/activity_header"
+        android:text="@string/music_act_name"/>
+    <TextView
+        android:id="@+id/musicDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/contents"/>
 
     <Button android:id="@+id/btnStartService"
         android:layout_width="match_parent"
@@ -13,9 +23,38 @@
         android:onClick="startService"/>
 
     <Button
+        android:id="@+id/btnStopService"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/music_stop_btn"
         android:onClick="stopService"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radMusic1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/music1"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:id="@+id/radMusic2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/music2"
+            android:onClick="onRadioButtonClicked"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/copyright"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|right"
+        android:text="@string/copy_right_claim"
+        android:visibility="invisible"
+        android:textSize="@dimen/copyright" />
 
 </LinearLayout>
