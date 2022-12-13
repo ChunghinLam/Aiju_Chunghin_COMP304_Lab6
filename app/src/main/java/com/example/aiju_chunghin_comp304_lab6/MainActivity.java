@@ -70,35 +70,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void toMusicAct(View view){
+    public void toMusicAct(View view) {
         Intent intent = new Intent(this, MusicActivity.class);
 
         startActivity(intent);
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-
-        MenuItem mnuMusic = menu.findItem(R.id.mnuMusic);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.mnuMusic:
-                doMusic();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    private void doMusic() {
-        Intent music = new Intent(MainActivity.this, MusicActivity.class);
-        startActivity(music);
     }
 }
